@@ -1,35 +1,35 @@
 #Chapter 1
 
 
-##Spring Security Architecture:
+## Spring Security Architecture:
 
 ![architecture](src/main/resources/architecture.png)
 
-###Authentication Filter:
+### Authentication Filter:
 - Intercepts HTTP Request on server side
 - Forwards request to auth manager object
 - Default Implementation: Basic Authentication Filter
 
-###Authentication Manager:
+### Authentication Manager:
 - Decides which provider will handle the authentication request
 
-###Authentication provider:
+### Authentication provider:
 - Spring security allows you to register multiple authentication providers.
 - Authentication provider tells spring how to authenticate the user.
 
 
-###UserDetailService:
+### UserDetailService:
 - Contract that allows Authentication provider to know user’s username, password, roles
 - We have to let spring now how to read the username and password for authentication
 - Retrieves details from DB/memory/LDAP
 
-###Password Encoder:
+### Password Encoder:
 - Authentication provider uses this to know if password is correct and role is valid
 - E.G B Crypt
 - Password always hashed and kept in key-store
 - Has methods encode and matches for verifying password
 
-###Security Context:
+### Security Context:
 - If user is valid, the details are stored by authentication filter in Security Context object.
 - Stores users authorities. i.e what the user is allowed to do
 
@@ -37,7 +37,7 @@
 
 
 
-##Demo:
+## Demo:
 
 - Create a rest endpoint that return String
 - Adding spring security auto configures some default security. You have to override this configuration (dummy implementation that tells spring security is working)
