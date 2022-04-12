@@ -1,3 +1,7 @@
 rootProject.name = 'rishi-spring-security'
 
-include ':chapter_one'
+include 'chapter_1'
+include 'chapter_2'
+include 'chapter_3'
+include 'chapter_4'
+

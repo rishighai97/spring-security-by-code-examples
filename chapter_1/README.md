@@ -19,11 +19,13 @@
 
 
 ### UserDetailService:
+- Loads user by username
 - Contract that allows Authentication provider to know user’s username, password, roles
 - We have to let spring now how to read the username and password for authentication
 - Retrieves details from DB/memory/LDAP
 
 ### Password Encoder:
+- Encodes password/ Compares password
 - Authentication provider uses this to know if password is correct and role is valid
 - E.G B Crypt
 - Password always hashed and kept in key-store
