@@ -1,4 +1,4 @@
-package com.chapter.two;
+package com.chapter.three;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

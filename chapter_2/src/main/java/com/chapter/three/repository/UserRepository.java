@@ -1,6 +1,6 @@
-package com.chapter.two.repository;
+package com.chapter.three.repository;
 
-import com.chapter.two.entity.User;
+import com.chapter.three.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

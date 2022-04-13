@@ -1,6 +1,6 @@
-package com.chapter.two.config;
+package com.chapter.three.config;
 
-import com.chapter.two.service.JPAUserDetailsService;
+import com.chapter.three.service.JPAUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetailsService;

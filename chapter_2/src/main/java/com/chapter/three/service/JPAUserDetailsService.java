@@ -1,8 +1,8 @@
-package com.chapter.two.service;
+package com.chapter.three.service;
 
-import com.chapter.two.domain.SpringSecurityUser;
-import com.chapter.two.entity.User;
-import com.chapter.two.repository.UserRepository;
+import com.chapter.three.domain.SpringSecurityUser;
+import com.chapter.three.entity.User;
+import com.chapter.three.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

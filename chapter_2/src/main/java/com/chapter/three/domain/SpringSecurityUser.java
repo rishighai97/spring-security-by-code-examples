@@ -1,6 +1,6 @@
-package com.chapter.two.domain;
+package com.chapter.three.domain;
 
-import com.chapter.two.entity.User;
+import com.chapter.three.entity.User;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
