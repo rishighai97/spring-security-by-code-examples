@@ -1,6 +1,6 @@
 # Chapter 4
 
-#### Authentication provider custom implementation
+####  Implementing our Custom Authentication Provider that does UsernamePasswordAuthentication provided by HttpBasic Authentication Filter
 
 ![architecture](src/main/resources/architecture1.png)
 - Authentication Provider:
