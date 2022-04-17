@@ -1,6 +1,7 @@
 # Chapter 6
 
-#### Two-factor Authentication Part 1: Username and password and otp authentication to generate a token
+#### Multiple Authentication Providers Part 1
+#### Two-factor Authentication : Username and password and otp authentication to generate a token
 
 - 2 step authentication
     - Username and password
@@ -47,7 +48,7 @@
     - extends JpaRepository<Otp, Integer>
 
 ### Create controller
-- Hello Controller with @GetMapping returning a String ("/login")
+- Hello Controller with @GetMapping returning a String ("/hello")
 
 ### Create configuration
 - ProjectConfig
@@ -83,6 +84,7 @@
     - Override doFilterInternal and shouldNotFilter
     - should not filter
         - Return !request.getServletPath().equals("/login") : Filter should not work for any endpoint other than login
+        - As we did getServletPath, we do not need an endpoint defined in some controller
     - Configure AuthenticationManager
         - Autowire AuthenticationManager bean
         - Create authenication manager bean in Project Config by overriding authenticationManagerBean
@@ -105,11 +107,11 @@
         - Step 1:
             - create object Authentication a for UsernamePasswordAuthentication(username , password)
             - authenticationManager.authenticate(a)
-            - SecurityContextHolder.getContext().setAuthentication(a)
+            - SecurityContextHolder.getContext().setAuthentication(a) will be done in part 2
         - Step 2:
             - create object a for OtpAuthentication(username , otp)
             - authenticationManager.authenticate(a)
-            - SecurityContextHolder.getContext().setAuthentication(a)
+            - SecurityContextHolder.getContext().setAuthentication(a) will be done in part 2
     
 ### Creating custom authentication providers
 - UsernamePasswordAuthProvider

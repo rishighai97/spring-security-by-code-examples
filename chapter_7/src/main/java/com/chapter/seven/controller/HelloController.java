@@ -1,11 +1,11 @@
-package com.chapter.six.controller;
+package com.chapter.seven.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class LoginController {
-    @GetMapping("/login")
+public class HelloController {
+    @GetMapping("/hello")
     public String login() {
         return "Chapter 6. Logged in";
     }

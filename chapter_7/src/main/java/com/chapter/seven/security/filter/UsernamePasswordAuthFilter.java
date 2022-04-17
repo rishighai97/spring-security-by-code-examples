@@ -1,9 +1,10 @@
-package com.chapter.six.security.filter;
+package com.chapter.seven.security.filter;
 
-import com.chapter.six.entity.Otp;
-import com.chapter.six.repository.OtpRepository;
-import com.chapter.six.security.authentications.OtpAuthentication;
-import com.chapter.six.security.authentications.UsernamePasswordAuthentication;
+import com.chapter.seven.entity.Otp;
+import com.chapter.seven.repository.OtpRepository;
+import com.chapter.seven.security.authentications.OtpAuthentication;
+import com.chapter.seven.security.authentications.UsernamePasswordAuthentication;
+import com.chapter.seven.security.mangers.TokenManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,6 +29,9 @@ public class UsernamePasswordAuthFilter extends OncePerRequestFilter {
     @Autowired
     private OtpRepository otpRepository;
 
+    @Autowired
+    private TokenManager tokenManager;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         var username = request.getHeader("username");
@@ -49,6 +53,7 @@ public class UsernamePasswordAuthFilter extends OncePerRequestFilter {
             var authenticated = authenticationManager.authenticate(new OtpAuthentication(username, otp));
             if (authenticated.isAuthenticated()) {
                 var uuid = UUID.randomUUID().toString();
+                tokenManager.add(uuid);
                 response.setHeader("Authorization", uuid);
             } else {
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
