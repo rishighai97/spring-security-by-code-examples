@@ -1,4 +1,4 @@
-package com.chapter.eight.security.provider;
+package com.chapter.seven.security.provider;
 
 import com.chapter.eight.security.authentications.UsernamePasswordAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;

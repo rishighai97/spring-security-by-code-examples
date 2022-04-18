@@ -1,4 +1,4 @@
-package com.chapter.eight.security.mangers;
+package com.chapter.seven.security.mangers;
 
 import org.springframework.stereotype.Component;
 

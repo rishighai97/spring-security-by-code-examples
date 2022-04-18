@@ -1,4 +1,4 @@
-package com.chapter.eight.security.authentications;
+package com.chapter.seven.security.authentications;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;

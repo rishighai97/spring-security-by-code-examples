@@ -1,4 +1,4 @@
-package com.chapter.eight.entity;
+package com.chapter.seven.entity;
 
 import lombok.Getter;
 import lombok.Setter;

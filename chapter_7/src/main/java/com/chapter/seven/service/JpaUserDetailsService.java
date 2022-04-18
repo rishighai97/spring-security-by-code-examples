@@ -1,4 +1,4 @@
-package com.chapter.eight.service;
+package com.chapter.seven.service;
 
 import com.chapter.eight.repository.UserRepository;
 import com.chapter.eight.security.model.SecurityUser;

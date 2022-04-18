@@ -1,4 +1,4 @@
-package com.chapter.eight.security.filter;
+package com.chapter.seven.security.filter;
 
 import com.chapter.eight.entity.Otp;
 import com.chapter.eight.repository.OtpRepository;

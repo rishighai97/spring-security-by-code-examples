@@ -1,4 +1,4 @@
-package com.chapter.eight.security.model;
+package com.chapter.seven.security.model;
 
 import com.chapter.eight.entity.User;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.chapter.eight.repository;
+package com.chapter.seven.repository;
 
 
 import com.chapter.eight.entity.User;

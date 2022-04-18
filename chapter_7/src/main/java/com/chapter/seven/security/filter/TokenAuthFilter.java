@@ -1,4 +1,4 @@
-package com.chapter.eight.security.filter;
+package com.chapter.seven.security.filter;
 
 import com.chapter.eight.security.authentications.TokenAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;

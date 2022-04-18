@@ -1,11 +1,6 @@
 package com.chapter.eight.controller;
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.security.concurrent.DelegatingSecurityContextExecutor;
 import org.springframework.security.concurrent.DelegatingSecurityContextExecutorService;
-import org.springframework.security.concurrent.DelegatingSecurityContextRunnable;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +24,6 @@ public class HelloController {
         DelegatingSecurityContextExecutorService delegatingSecurityContextExecutor = new DelegatingSecurityContextExecutorService(executorService);
         delegatingSecurityContextExecutor.submit(runnable);
         delegatingSecurityContextExecutor.shutdown();
-        return "Chapter 6. Logged in";
+        return "Chapter 8. Logged in";
     }
 }
