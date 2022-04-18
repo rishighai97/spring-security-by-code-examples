@@ -1,12 +1,12 @@
 package com.chapter.seven.config;
 
 
-import com.chapter.eight.security.filter.TokenAuthFilter;
-import com.chapter.eight.security.filter.UsernamePasswordAuthFilter;
-import com.chapter.eight.security.provider.OtpAuthenticationProvider;
-import com.chapter.eight.security.provider.TokenAuthProvider;
-import com.chapter.eight.security.provider.UsernamePasswordAuthProvider;
-import com.chapter.eight.service.JpaUserDetailsService;
+import com.chapter.seven.security.filter.TokenAuthFilter;
+import com.chapter.seven.security.filter.UsernamePasswordAuthFilter;
+import com.chapter.seven.security.provider.OtpAuthenticationProvider;
+import com.chapter.seven.security.provider.TokenAuthProvider;
+import com.chapter.seven.security.provider.UsernamePasswordAuthProvider;
+import com.chapter.seven.service.JpaUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

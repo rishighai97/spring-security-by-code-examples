@@ -1,9 +1,9 @@
 package com.chapter.seven.security.provider;
 
 
-import com.chapter.eight.entity.Otp;
-import com.chapter.eight.repository.OtpRepository;
-import com.chapter.eight.security.authentications.OtpAuthentication;
+import com.chapter.seven.entity.Otp;
+import com.chapter.seven.repository.OtpRepository;
+import com.chapter.seven.security.authentications.OtpAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;

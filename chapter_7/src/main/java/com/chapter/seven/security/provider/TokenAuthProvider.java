@@ -1,7 +1,7 @@
 package com.chapter.seven.security.provider;
 
-import com.chapter.eight.security.authentications.TokenAuthentication;
-import com.chapter.eight.security.mangers.TokenManager;
+import com.chapter.seven.security.authentications.TokenAuthentication;
+import com.chapter.seven.security.mangers.TokenManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;

@@ -1,6 +1,6 @@
 package com.chapter.seven.security.model;
 
-import com.chapter.eight.entity.User;
+import com.chapter.seven.entity.User;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

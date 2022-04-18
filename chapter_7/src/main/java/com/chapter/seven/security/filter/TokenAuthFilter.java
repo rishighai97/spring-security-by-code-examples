@@ -1,6 +1,6 @@
 package com.chapter.seven.security.filter;
 
-import com.chapter.eight.security.authentications.TokenAuthentication;
+import com.chapter.seven.security.authentications.TokenAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.context.SecurityContextHolder;

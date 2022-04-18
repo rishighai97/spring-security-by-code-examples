@@ -1,6 +1,6 @@
 package com.chapter.seven.security.provider;
 
-import com.chapter.eight.security.authentications.UsernamePasswordAuthentication;
+import com.chapter.seven.security.authentications.UsernamePasswordAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;

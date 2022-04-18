@@ -1,6 +1,6 @@
 package com.chapter.seven.repository;
 
-import com.chapter.eight.entity.Otp;
+import com.chapter.seven.entity.Otp;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

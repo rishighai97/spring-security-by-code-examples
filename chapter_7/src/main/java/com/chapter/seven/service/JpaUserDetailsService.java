@@ -1,7 +1,7 @@
 package com.chapter.seven.service;
 
-import com.chapter.eight.repository.UserRepository;
-import com.chapter.eight.security.model.SecurityUser;
+import com.chapter.seven.repository.UserRepository;
+import com.chapter.seven.security.model.SecurityUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
