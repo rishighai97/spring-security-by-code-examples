@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CSRF</title>
+</head>
+<body>
+<h1>Hello: Post operation successful</h1>
+<form method="post" action="/change">
+    <button type="submit">PRESS ME!</button>
+    <input type="hidden" name="_csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> <!-- If not done, you will get 403 on post -->
+</form>
+</body>
+</html>
