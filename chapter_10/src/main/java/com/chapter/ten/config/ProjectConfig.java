@@ -16,7 +16,7 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests().anyRequest().permitAll();
         http.cors(c -> {
-            CorsConfigurationSource ccs = r-> {
+            CorsConfigurationSource ccs = r -> {
                 CorsConfiguration cc = new CorsConfiguration();
                 cc.setAllowedOrigins(List.of("*"));
                 cc.setAllowedMethods(List.of("GET", "POST"));
