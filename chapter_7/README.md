@@ -6,7 +6,7 @@
 
 ![architecture](src/main/resources/architecture1.png)
 
--- Add second part of authentication using uuid by adding another filter
+- Add second part of authentication using uuid by adding another filter
 
 ## Demo
 
