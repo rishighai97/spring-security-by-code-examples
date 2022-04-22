@@ -108,15 +108,17 @@
     - Use it to get new access token
         - Do localhost:8080/oauth/token?grant_type=refresh_token&token=<refresh token> POST request
         - Add Basic auth client1|secret1
+    - Throws NPE
+        - Possible root cause: Use of in memory token store not having refresh token to validate
     
 
-# Quick demo on changing tokens
+# Quick demo on changing tokens by changing token store
 - OAuth 2 does not enforce usage of any specific type of token
 - You use token store from spring
     - In AuthServerConfig
         - Create JwtAccessTokenConverter methods returning the object
         - Create Bean Token Store
-            - var tokenStore = JwtTokenStore jwetAccessTOkenConvertor by calling convertor
+            - var tokenStore = JwtTokenStore jwetAccessTokenConvertor by calling convertor
             - return tokenStore
         - Add tokenStore(tokenStore()).accessTokenConvertor(convertor()) in endpoints configure after manager
 - Test the application
