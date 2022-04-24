@@ -106,11 +106,10 @@
     - We use this value to obtain a new access token without needing the user to authenticate again
     - Use case: Avoid need for user to authenticate again
     - Use it to get new access token
-        - Do localhost:8080/oauth/token?grant_type=refresh_token&token=<refresh token> POST request
+        - Do localhost:8080/oauth/token?grant_type=refresh_token&refresh_token=<refresh token> POST request
         - Add Basic auth client1|secret1
     - Throws NPE
-        - Possible root cause: Use of in memory token store not having refresh token to validate
-    
+        - To Fix it, add user details service bean in configure(endpoints) // seems like a bug with spring security that you have to add the bean in configure explicitly
 
 ## Quick demo on changing tokens by changing token store
 - OAuth 2 does not enforce usage of any specific type of token
@@ -127,7 +126,7 @@
 - We have different implementations of token store
     - We use in memory and jwt token store
     - We can also store tokens in database using Jdbc
-    - Jwk used for storing certificates
+    - Jwt used for storing certificates
 
 ## Implicit Grant Type vs Authorization code grant type
 
