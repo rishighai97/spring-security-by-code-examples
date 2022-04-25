@@ -2,6 +2,7 @@
 
 ![architecture](src/main/resources/architecture.png)
 
+- Resource server uses a blackboarding database (shared databse) to validate access token issued by authorization server
 - Blackboarding: Resource server validates authentication token from authorization server using shared database
 - We use a jdbc token store for blackboarding in this demo
 - Use case for jdbc token store:
