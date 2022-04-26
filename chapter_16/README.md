@@ -1,4 +1,4 @@
-# CHapter 16
+# Chapter 16
 
 #### Using non opaque tokens in Spring Security using JWT
 
