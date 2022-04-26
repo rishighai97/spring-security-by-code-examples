@@ -1,6 +1,6 @@
 # Chapter 16
 
-#### Using non opaque tokens in Spring Security using JWT
+#### Using non-opaque tokens in Spring Security using JWT
 
 - We will also be storing client details in the database
 
