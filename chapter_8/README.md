@@ -1,6 +1,6 @@
 # Chapter 8
 
-#### Security Context
+#### Security Context and it's 3 modes
 - Security Context is the place where spring security stores the authenticated user
 - Spring security uses security context to get user for authorization
 - Security context can be accessed from anywhere in the application

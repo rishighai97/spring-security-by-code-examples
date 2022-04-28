@@ -1,5 +1,7 @@
 # Chapter Two
 
+#### Implementing our own UserDetailsService getting user from MySQL
+
 ## Workflow Recap from previous chapter
 ![architecture](src/main/resources/architecture1.png)
 

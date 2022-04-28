@@ -1,6 +1,6 @@
 # Chapter 13
 
-- Validating opaque tokens on resource server
+#### Validating opaque tokens on resource server (3 scenarios)
 
 # OPAQUE token
 - OPAQUE token is just a string with no information

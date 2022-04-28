@@ -1,5 +1,6 @@
 # Chapter 1
 
+#### Implementing UserDetailsService and PasswordEncoder
 
 ## Spring Security Architecture:
 

@@ -1,5 +1,7 @@
 # Chapter 5
 
+#### Custom authentication filter implementation
+
 ## Filter Chain
 
 ![architecture1](src/main/resources/architecture1.png)
@@ -10,7 +12,7 @@
 - We can add our own Authentication Filter in place of basic Authentication Filter
 - We will implement something other than HttpBasic
 
-## Demo: use case 1 Filter to authorizing the request matching the key
+## Demo: use case 1 Filter to authorize the request matching the key
 
 ### Create new project with required dependencies
 - spring web, security

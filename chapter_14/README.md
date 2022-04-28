@@ -1,6 +1,6 @@
 # Chapter 14
 
-#### Using Opaque tokens: Introspection
+#### Validating opaque tokens via Token Introspection
 
 - After resource server gets the access token, it needs to validate the token with authorization server
 - Need for validation comes as opaque token do not provide any information about the user
@@ -49,26 +49,7 @@
     - Create class ResourceServerConfig
     - Do @Configuration and @EnableResourceServer
 - create application.properties and do a server.port=9090
-
-### Test the application
-- Without token introspection
-    - do localhost:8080/hello
-- With token introspection
-    - 1: get token
-        - http://localhost:8080/oauth/token?grant_type=password&username=bill&password=12345&scope=read
-    - 2: hit /hello with token
-        - Add header : Authorization | Bearer <token>
-        - hit localhost:9090/hello
-- Both cases do not work as resource server and auth server do not have access to the same token store now
-- Case 2 works if we provider client:secret with basic auth.
-- So we will have to configure auth server with client secret in resource server to make it work
-
-### Setup token introspection
-- We provide resource server the endpoint to introspect the token
-    - we can do this by adding following property in app,properties
-        - security.oauth2.resource,token-info-uri:http:localhost:8080/oauth/check_token // this automatically creates token store with same contract as auth server
-- As we have done isAuthenticated in auth server, we need to provide client credentials in resource server
-    - add following properties to application.properties
+erties to application.properties
         - security.oauth2.client.client-id=resourceserver
         - security.oauth2.client.client-secret=12345
 

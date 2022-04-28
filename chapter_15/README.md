@@ -1,5 +1,7 @@
 # Chapter 15
 
+#### Validating opaque tokens via blackboarding database
+
 ![architecture](src/main/resources/architecture.png)
 
 - Resource server uses a blackboarding database (shared databse) to validate access token issued by authorization server
