@@ -7,7 +7,7 @@
 
 ## Symmetric keys
 
-![architecture1.png](src/architecture1.png)
+![architecture1.png](src/main/resources/architecture1.png)
 
 - golden key
 - it is owned by someone
@@ -31,7 +31,7 @@
 
 ## Asymmetric keys
 
-![architecture2.png](src/architecture2.png)
+![architecture2.png](src/main/resources/architecture2.png)
 
 - private-public key are in pairs
 - we generally create a private key and generate a public key from it using cryptographic algorithm
@@ -165,4 +165,4 @@
     - pubic key is stored in resource server
 - In next chapter
     - Auth server will send it's public key part to resource server via an endpoint
--![architecture3.png](src/architecture3.png)
+-![architecture3.png](src/main/resources/architecture3.png)

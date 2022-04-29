@@ -22,6 +22,7 @@ Chapter | Topic
 16 | Using non-opaque tokens in Spring Security using JWT
 17 | Using symmetric/synchronous keys with JWT (password/authorization grant type)
 18 | Using asymmetric/asynchronous key pairs with JWT (password/authorization grant type)
+19 | Configuring the authorization server to expose the public key
 
 
 

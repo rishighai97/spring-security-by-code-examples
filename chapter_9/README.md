@@ -22,7 +22,7 @@
 
 ### Test the app
 - Use the usernmame password from console
-- On startup you are automatically redirected to login page on doing localhost:8080 via prowser
+- On startup you are automatically redirected to login page on doing localhost:8080 via browser
 - Do user, password from console and you can view Hello
 - Go to chrome inspector and viwe the login form
 - There is a hidden csrf input field having a value (csrf token)
