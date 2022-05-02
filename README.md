@@ -24,5 +24,6 @@ Chapter | Topic
 18 | Using asymmetric/asynchronous key pairs with JWT (password/authorization grant type)
 19 | Configuring the authorization server to expose the public key
 20 | Using Keycloak as an authorization server
+21 | Using DSL (new) method to implement the resource server
 
 

@@ -14,12 +14,13 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.8.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    runtimeOnly 'com.nimbusds:oauth2-oidc-sdk:8.4'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starterO-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 }
 

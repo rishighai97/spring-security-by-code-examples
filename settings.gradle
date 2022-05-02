@@ -1,3 +1,10 @@
+//pluginManagement {
+//    plugins {
+//        id 'org.springframework.boot' version "2.3.3.RELEASE"
+//        id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+//    }
+//}
+
 rootProject.name = 'rishi-spring-security'
 
 include 'chapter_1'
@@ -33,4 +40,6 @@ include 'chapter_19_1'
 include 'chapter_25'
 include 'chapter_26'
 include 'chapter_27'
+include 'chapter_21_rs_1'
+include 'chapter_21_rs_2'
 
