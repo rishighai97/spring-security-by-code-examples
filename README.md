@@ -1,5 +1,8 @@
 # spring-security-by-code-examples
 
+Code examples following [spring security playlist](https://www.youtube.com/playlist?list=PLEocw3gLFc8XRaRBZkhBEZ_R3tmvfkWZz) by Laurentiu Spilca
+
+
 ## Index
 
 Chapter | Topic
@@ -25,5 +28,6 @@ Chapter | Topic
 19 | Configuring the authorization server to expose the public key
 20 | Using Keycloak as an authorization server
 21 | Using DSL (new) method to implement the resource server
+22 | Implementing Single Sign On (SSO) using github as authorization server
 
 
