@@ -30,4 +30,5 @@ Chapter | Topic
 21 | [Using DSL (new) method to implement the resource server](chapter_21/README.md)
 22 | [Implementing Single Sign On (SSO) using github as authorization server](chapter_22/README.md)
 23 | [Configuring endpoint authorization](chapter_23/README.md)
+24 | [Authorities, Roles and Matcher methods](chapter_24/README.md)
 
