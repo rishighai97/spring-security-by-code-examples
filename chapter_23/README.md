@@ -74,7 +74,7 @@
 - the rule 
     - permitAll() // allow access to the request
     - related to authorization
-    - authentication will happend
+    - authentication will happen
     
 ### Test the application
 - hit hello endpoint
