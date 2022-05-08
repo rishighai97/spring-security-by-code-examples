@@ -30,7 +30,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
                         j.jwtAuthenticationConverter(convertor());
                     });
                 });
-        // todo check why authentication ignored when not passing bearer token
+        // todo check why authentication ignored when not passing bearer token (seems like issue with postman. Working now)
         http
                 .authorizeRequests()
                     .mvcMatchers("/demo/**").hasAuthority("read")
