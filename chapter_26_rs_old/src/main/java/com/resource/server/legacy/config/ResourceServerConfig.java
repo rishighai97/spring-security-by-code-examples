@@ -18,7 +18,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .mvcMatchers("/demo/**").hasAuthority("write");
+                .mvcMatchers("/demo/**").hasAuthority("write")
+                .anyRequest().authenticated();
     }
 
     @Override
