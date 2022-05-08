@@ -40,10 +40,10 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
                 .authenticationManager(authenticationManager)
-                .tokenStore(tokenStore())
-                .accessTokenConverter(convertor());
+                /*.tokenStore(tokenStore())
+                .accessTokenConverter(convertor())*/;
     }
-
+/*
     @Bean
     public TokenStore tokenStore() {
         return new JwtTokenStore(convertor());
@@ -54,5 +54,5 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
         var convertor = new JwtAccessTokenConverter();
         convertor.setSigningKey("asdfsdfsdfgsfgdgfghjgjgjtyjhsdcsdcsdvdfvdfvf");
         return convertor;
-    }
+    }*/
 }
