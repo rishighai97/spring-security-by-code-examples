@@ -24,10 +24,10 @@
 - AuthConfig
     - @Configuration
     - @EnableAuthorizationServer
-    - extemnd AuthorizationServerConfigurerADapter
+    - extend AuthorizationServerConfigurerADapter
     - @Autowire AuthenticationManager
     - override configure(clients)
-        - clients.inMemory().withClient("client1").secret("secret1").authorizedGrantTypes("password").scopes("read").build()
+        - clients.inMemory().withClient("client1").secret("secret1").authorizedGrantTypes("password").scopes("read")
     - override configure(endpoints)
         - endpoints.authenticationManager(authenticationManager)
     
@@ -125,8 +125,9 @@
 - config => ResourceServerConfig
 - Authorization rules are available in ResourceServerConfigurerAdapter class for resource server
 - override configure(http)
-     - remove super call
-    - http.authorizeRequests().mvcMatchers("/demo/**").hasAuthority("write")
+    - remove super call
+    - http.authorizeRequests().mvcMatchers("/demo/**").hasAuthority("write") 
+        - NOTE: <b>if for other request nothing is specified, they are permitted by default</b>
     
 ### Test the application with authority write
 - Hit demo endpoint with access token
@@ -170,7 +171,7 @@
     - JwtDecoder decoder()
         - @Bean
         - key = "asdasdsdasdsdsd.. (>36 characters)" replace the key in Auth Server=>config => AuthConfig => convertor
-        - secretKey = new SecretKeySpec(key.getbyter(), 0 ,key.getByter().length, "AES")
+        - secretKey = new SecretKeySpec(key.getbytes(), 0 ,key.getBytes().length, "AES")
         - return NimbusJwtDecoder.withSecretKey(secretKey).build()
     
 ### add server.port=9090 in resource => application.properties
