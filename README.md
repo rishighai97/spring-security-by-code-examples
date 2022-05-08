@@ -32,4 +32,5 @@ Chapter | Category | Topic
 23 | Authorization | [Configuring endpoint authorization](chapter_23/README.md)
 24 | Authorization | [Authorities, Roles and Matcher methods](chapter_24/README.md)
 25 | Authorization | [MVC matchers and ANT matchers](chapter_25/README.md)
+26 | Authorization | [Endpoint authorization rules for an OAuth 2 resource server](chapter_26/README.md)
 
