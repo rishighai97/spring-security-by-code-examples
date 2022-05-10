@@ -34,3 +34,4 @@ Chapter | Category | Topic
 25 | Authorization | [MVC matchers and ANT matchers](chapter_25/README.md)
 26 | Authorization | [Endpoint authorization rules for an OAuth 2 resource server](chapter_26/README.md)
 27 | Authorization | [Method authorization configurations](chapter_27/README.md)
+27 | Authorization | [Preauthorization, postauthorization, prefiltering and postfiltering](chapter_28/README.md)

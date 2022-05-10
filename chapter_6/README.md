@@ -56,7 +56,7 @@
     - extend WebSecurityConfigurerAdapter
     - Override
     
-### Create UserDetailsService
+### Add users: Create UserDetailsService
 - Create JpaUserDetailsService
     - @Service
     - implement UserDetailsService

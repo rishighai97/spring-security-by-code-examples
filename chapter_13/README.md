@@ -23,7 +23,7 @@
     - PasswordEncoder
         - @Bean
         - new BCryptPasswordEncoder()
-    - UserDetailsService bean
+    - Add users: UserDetailsService bean
         - @Bean
         - new InMemoryUserDetailsManager
         - User.withUsername("bill").password(passwordEncoder().encode("12345")).authorities("read").build()

@@ -19,7 +19,7 @@
 - Authentication provider tells spring how to authenticate the user.
 
 
-### UserDetailService:
+### Add users: UserDetailService:
 - Loads user by username
 - Contract that allows Authentication provider to know user’s username, password, roles
 - We have to let spring now how to read the username and password for authentication

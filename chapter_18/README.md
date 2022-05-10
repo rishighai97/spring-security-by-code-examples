@@ -48,7 +48,7 @@
     - @Configuration
     - extend WebSecurityConfigurerAdapter
     - override and @Bean authenticationManagerBean
-    - UserDetailsService
+    - Add users: UserDetailsService
         - @Bean
         - inMemoryUserDetailsManager = new InMemoryUserDetailsManager()
         - userDetails = User.withUsername("john").password("12345").authorities("read").build()

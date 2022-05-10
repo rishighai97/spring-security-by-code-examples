@@ -32,7 +32,7 @@
 - config package
     - UserManagementConfig
         - @Configuration
-        - UserDetailsService
+        - Add users: UserDetailsService
             - @Bean
             - uds = new InMemoryUserDetailsManager()
             - add user = Users.withUsername("bill").password("12345").authorities("read").build()

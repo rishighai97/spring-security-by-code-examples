@@ -11,7 +11,7 @@
 
 ![password](src/main/resources/password.png)
 
--  Client knows users username+password
+- Client knows users username+password
 - Client sends username+password to authorization server
 - Authorization server provides client  valid token
 - Client sends token to the resource sever

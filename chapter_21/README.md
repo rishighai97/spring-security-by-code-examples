@@ -7,9 +7,9 @@
 ### Configurations
 - config package
 - UserManagementConfig
-    - UserDetailsService
+    - Add users: UserDetailsService
     - PasswordEncoder
-    - AuthenticationManager
+    - Expose users to link them in auth server: AuthenticationManager
 - AuthServerConfig
     - configure(clients)
         - client1 | secret1 | read | password 
