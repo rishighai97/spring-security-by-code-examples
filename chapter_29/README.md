@@ -110,3 +110,33 @@
     
 ### Note
 - This example did not need username as path variable since we use username from authenticated user
+
+### Alternative to Performance Evaluator and hasPermission (covered in chapter_30 in youtube playlist)
+- we need to have a solution where we have to provide multiple authorization rules
+- Permission Evaluator has a second method with type field in hasPermission to provide multiple implementation, still it is not clean
+- Alternative: Create a spring bean returning true/false in the context
+- Creation of bean
+    - security => DocumentMethodAuthorizationManager
+    - @Component
+    - boolean applySecurityPermissions(List<Document> returnedObject, String permission)
+        - Copy the logic from security => PerformanceEvaluator in this method and modify it as needed
+        - The only thing we do not have is the PerformanceEvaluator
+        - Authentication authentication = SecurityContextHolder().getContext().getAuthentication()
+        - This code is more clean due to no casts
+        - Problem: This bean is that there is no way to understand that it is for AUthorization Rule
+            - Solution: Add a marker interface for authorization rule
+            - Create interface security => AuthorizationRuleManager
+            - Make DocumentMethodAuthorizationManager implement AuthorizationRuleManager
+- Add bean to service
+    - service => DocumentService
+    - @PostAuthorize("@documentMethodAuthorizationManager.applySecurityPermissions(returnObject, 'read')")
+- Add application context to method security expression handler (the object where we had set the performance evaluator)
+    - config => ProjectConfig
+    - @Autowired applicationContext
+    - createExpressionHandler()
+        - meh.setApplicationContext(applicationContext)
+- Test the application via postman
+    - documents | john | 12345
+        - 200 OK
+    - documents | bill | 12345
+        - 403 FORBIDDEN

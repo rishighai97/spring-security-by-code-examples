@@ -1,16 +1,18 @@
-package com.chapter.twenty.nine.service;
+package com.chapter.thirty.service;
 
-import com.chapter.twenty.nine.model.Document;
+import com.chapter.thirty.model.Document;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @Service
 public class DocumentService {
 
-//    @PostAuthorize("hasPermission(returnObject, 'read')") // can also pass '' or null as the permission. Authentication object is passed by default
-    @PostAuthorize("@documentMethodAuthorizationManager.applySecurityPermissions(returnObject, 'read')")
+//    @Secured("ROLE_MANAGER")
+    @RolesAllowed("ROLE_MANAGER")
     public List<Document> findDocuments(String username) {
         var doc = new Document();
         doc.setUser("john");

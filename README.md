@@ -36,3 +36,4 @@ Chapter | Category | Topic
 27 | Authorization | [Method authorization configurations](chapter_27/README.md)
 28 | Authorization | [Preauthorization, postauthorization, prefiltering and postfiltering](chapter_28/README.md)
 29 | Authorization | [Using Permissions](chapter_29/README.md)
+30 | Authorization | [@Secured and @RolesAllowed](chapter_30/README.md)
