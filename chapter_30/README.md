@@ -2,9 +2,6 @@
 
 #### @Secured and @RolesAllowed
 
-## Demo: @Secured and @RolesAllowed (Copy code from chapter_29)
-
-
 ### Enable @SecuredEnabled and @RolesAloowed
 - config => ProjectConfig
 - @EnableGlobalMethodSecurity
