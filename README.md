@@ -37,3 +37,4 @@ Chapter | Category | Topic
 28 | Authorization | [Preauthorization, postauthorization, prefiltering and postfiltering](chapter_28/README.md)
 29 | Authorization | [Using Permissions](chapter_29/README.md)
 30 | Authorization | [@Secured and @RolesAllowed](chapter_30/README.md)
+31 | Reactive | [Securing reactive apps](chapter_31/README.md)
