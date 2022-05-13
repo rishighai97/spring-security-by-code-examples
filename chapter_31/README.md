@@ -88,6 +88,7 @@
 
 ### NOTE
 - No Authentication provider in reactive spring
+- Authentication manager handles authentication
     
 ### Method security configuration (PreAuthorize)
 - Not as mature as the Non Reactive app
@@ -96,9 +97,12 @@
     - config => ProjectCOnfig
     - @EnableReactiveGlobalMethodSecurity
         - No option to choose from prePostEnable, secured, jsr350 
+  - Disable endpoint security for testing
+    - Replace .hasAuthority('read') with .authenticated()
 - Add @PreAuthorize
     - controller => DemoController
-    - @PreAuthorize("hasAuthority('read')")
+    - @PreAuthorize("hasAuthority('write')")
+
 - Test the application
-    - /demo | john | 12345 | read => 200
-    - /demo | bill | 12345 | write => 403
+    - /demo | john | 12345 | read => 403
+    - /demo | bill | 12345 | write => 200
