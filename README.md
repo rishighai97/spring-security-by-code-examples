@@ -38,3 +38,4 @@ Chapter | Category | Topic
 29 | Authorization | [Using Permissions](chapter_29/README.md)
 30 | Authorization | [@Secured and @RolesAllowed](chapter_30/README.md)
 31 | Reactive | [Securing reactive apps](chapter_31/README.md)
+32 | Reactive | [Building an oauth2 reactive resource server](chapter_32/README.md)

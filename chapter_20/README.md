@@ -56,7 +56,7 @@
     - POST <token_endpoint>
     - Body (form encoded)
         - grant_type = password
-        - client_id = example (we have not added a secret for the client)
+        - client_id = example (we have not added a secret for the client) (no client auth needed in keycloack)
             - try using account client with its credentials => this client is recognized 
         - scope = read
         - username = john
