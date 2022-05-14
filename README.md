@@ -39,3 +39,5 @@ Chapter | Category | Topic
 30 | Authorization | [@Secured and @RolesAllowed](chapter_30/README.md)
 31 | Reactive | [Securing reactive apps](chapter_31/README.md)
 32 | Reactive | [Building an oauth2 reactive resource server](chapter_32/README.md)
+33 | Testing | [Integration testing for Spring Security implementations - Part 1](chapter_33/README.md)
+34 | Testing | [Integration testing for Spring Security implementations - Part 2](chapter_34/README.md)
