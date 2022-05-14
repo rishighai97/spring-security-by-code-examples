@@ -1,6 +1,5 @@
 package com.chapter.twenty.seven.service;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.stereotype.Service;
 

@@ -1,10 +1,10 @@
 package com.chapter.seven.config;
 
 
-import com.chapter.seven.security.provider.TokenAuthProvider;
 import com.chapter.seven.security.filter.TokenAuthFilter;
 import com.chapter.seven.security.filter.UsernamePasswordAuthFilter;
 import com.chapter.seven.security.provider.OtpAuthenticationProvider;
+import com.chapter.seven.security.provider.TokenAuthProvider;
 import com.chapter.seven.security.provider.UsernamePasswordAuthProvider;
 import com.chapter.seven.service.JpaUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +49,8 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .addFilterAt(usernamePasswordAuthFilter, BasicAuthenticationFilter.class)
-            .addFilterAfter(tokenAuthFilter, BasicAuthenticationFilter.class);
+                .addFilterAt(usernamePasswordAuthFilter, BasicAuthenticationFilter.class)
+                .addFilterAfter(tokenAuthFilter, BasicAuthenticationFilter.class);
     }
 
     @Bean
@@ -62,9 +62,9 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
-            .authenticationProvider(usernamePasswordAuthProvider)
-            .authenticationProvider(otpAuthenticationProvider)
-            .authenticationProvider(tokenAuthProvider);
+                .authenticationProvider(usernamePasswordAuthProvider)
+                .authenticationProvider(otpAuthenticationProvider)
+                .authenticationProvider(tokenAuthProvider);
     }
 
     @Bean

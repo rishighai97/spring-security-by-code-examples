@@ -18,7 +18,7 @@ public class JPAUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> userOptional = userRepository.findOneByUsername(username);
-        User user = userOptional.orElseThrow(()->new UsernameNotFoundException("Username record not found in database"));
+        User user = userOptional.orElseThrow(() -> new UsernameNotFoundException("Username record not found in database"));
         return new SpringSecurityUser(user);
     }
 

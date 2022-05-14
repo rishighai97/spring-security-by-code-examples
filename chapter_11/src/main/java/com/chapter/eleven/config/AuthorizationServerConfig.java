@@ -19,17 +19,17 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
-            .inMemory()
-            .withClient("client1")
-            .secret("secret1")
-            .scopes("read")
-            .authorizedGrantTypes("password")
-            .and()
-            .withClient("client2")
-            .secret("secret2")
-            .scopes("read")
-            .authorizedGrantTypes("authorization_code")
-            .redirectUris("http://localhost:9090") // add form login in userManagementConfig
+                .inMemory()
+                .withClient("client1")
+                .secret("secret1")
+                .scopes("read")
+                .authorizedGrantTypes("password")
+                .and()
+                .withClient("client2")
+                .secret("secret2")
+                .scopes("read")
+                .authorizedGrantTypes("authorization_code")
+                .redirectUris("http://localhost:9090") // add form login in userManagementConfig
         ;
     }
 

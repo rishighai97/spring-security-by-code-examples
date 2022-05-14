@@ -15,7 +15,8 @@ public class DocumentController {
     @Autowired
     private DocumentService documentService;
 
-    @GetMapping("/document/{username}") // this example did not need username as path variable since we use username from authenticated user
+    @GetMapping("/document/{username}")
+    // this example did not need username as path variable since we use username from authenticated user
     public List<Document> findDocuments(@PathVariable String username) {
         return documentService.findDocuments(username);
     }

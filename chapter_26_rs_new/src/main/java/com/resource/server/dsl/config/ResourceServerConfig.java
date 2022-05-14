@@ -3,12 +3,9 @@ package com.resource.server.dsl.config;
 import com.nimbusds.jose.shaded.json.JSONArray;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
@@ -33,7 +30,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
         // todo check why authentication ignored when not passing bearer token (seems like issue with postman. Working now)
         http
                 .authorizeRequests()
-                    .mvcMatchers("/demo/**").hasAuthority("read")
+                .mvcMatchers("/demo/**").hasAuthority("read")
                 .anyRequest().authenticated();
     }
 

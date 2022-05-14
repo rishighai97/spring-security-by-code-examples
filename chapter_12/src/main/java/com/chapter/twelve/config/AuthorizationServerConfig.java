@@ -27,18 +27,18 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
-            .inMemory()
+                .inMemory()
                 .withClient("client1")
                 .secret("secret1")
                 .scopes("read")
                 .authorizedGrantTypes("password", "refresh_token")
-            .and()
+                .and()
                 .withClient("client2")
                 .secret("secret2")
                 .scopes("read")
                 .authorizedGrantTypes("authorization_code", "refresh_token")
                 .redirectUris("http://localhost:9090") // add form login in userManagementConfig
-            .and()
+                .and()
                 .withClient("client3")
                 .secret("secret3")
                 .scopes("read")
@@ -60,8 +60,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
-            .authenticationManager(authenticationManager)
-            .tokenStore(tokenStore()).accessTokenConverter(convertor())
-            .userDetailsService(userDetailsService); // link user to client -> need authentication manager
+                .authenticationManager(authenticationManager)
+                .tokenStore(tokenStore()).accessTokenConverter(convertor())
+                .userDetailsService(userDetailsService); // link user to client -> need authentication manager
     }
 }

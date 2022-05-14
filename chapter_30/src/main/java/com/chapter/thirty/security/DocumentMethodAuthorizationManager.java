@@ -17,11 +17,11 @@ public class DocumentMethodAuthorizationManager implements AuthorizationRuleMana
 
         boolean docsBelongToAuthUser = returnedList
                 .stream()
-                .allMatch(d->d.getUser().equals(username));
+                .allMatch(d -> d.getUser().equals(username));
 
         boolean hasProperAuthority = authentication.getAuthorities()
                 .stream()
-                .anyMatch(d->d.getAuthority().equals(authority));
+                .anyMatch(d -> d.getAuthority().equals(authority));
 
         return docsBelongToAuthUser && hasProperAuthority;
     }

@@ -14,11 +14,10 @@ import javax.crypto.spec.SecretKeySpec;
 public class ProjectConfig extends WebSecurityConfigurerAdapter {
 
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.oauth2ResourceServer(c->{
-            c.jwt(j->{
+        http.oauth2ResourceServer(c -> {
+            c.jwt(j -> {
                 JwtDecoder decoder = decoder();
                 j.decoder(decoder);
             });
@@ -29,7 +28,7 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public JwtDecoder decoder() {
         String keyValue = "asdfsdfsdfgsfgdgfghjgjgjtyjhsdcsdcsdvdfvdfvf";
-        SecretKey secretKey = new SecretKeySpec(keyValue.getBytes(), 0, keyValue.length() ,"AES");
+        SecretKey secretKey = new SecretKeySpec(keyValue.getBytes(), 0, keyValue.length(), "AES");
         return NimbusJwtDecoder.withSecretKey(secretKey).build();
     }
 }

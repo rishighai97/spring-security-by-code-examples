@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class DocumentService {
 
-//    @PostAuthorize("hasPermission(returnObject, 'read')") // can also pass '' or null as the permission. Authentication object is passed by default
+    //    @PostAuthorize("hasPermission(returnObject, 'read')") // can also pass '' or null as the permission. Authentication object is passed by default
     @PostAuthorize("@documentMethodAuthorizationManager.applySecurityPermissions(returnObject, 'read')")
     public List<Document> findDocuments(String username) {
         var doc = new Document();

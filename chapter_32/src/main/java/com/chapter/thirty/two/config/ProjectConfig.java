@@ -12,10 +12,10 @@ public class ProjectConfig {
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         return http
                 .authorizeExchange()
-                    .anyExchange().authenticated()
+                .anyExchange().authenticated()
                 .and()
-                    .oauth2ResourceServer()
-                    .jwt(jwtc->jwtc.jwkSetUri("http://localhost:8080/realms/master/protocol/openid-connect/certs"))
+                .oauth2ResourceServer()
+                .jwt(jwtc -> jwtc.jwkSetUri("http://localhost:8080/realms/master/protocol/openid-connect/certs"))
                 .and().build();
     }
 

@@ -18,7 +18,7 @@ public class DemoController {
         Mono<Authentication> monoAuthentication = ReactiveSecurityContextHolder
                 .getContext()
                 .map(SecurityContext::getAuthentication);
-        return monoAuthentication.map(ma->"Hello, ".concat(ma.getName()));
+        return monoAuthentication.map(ma -> "Hello, ".concat(ma.getName()));
     }
 
 }

@@ -7,25 +7,29 @@
 ![architecture](src/main/resources/architecture.png)
 
 ### Authentication Filter:
+
 - Intercepts HTTP Request on server side
 - Forwards request to auth manager object
 - Default Implementation: Basic Authentication Filter
 
 ### Authentication Manager:
+
 - Decides which provider will handle the authentication request
 
 ### Authentication provider:
+
 - Spring security allows you to register multiple authentication providers.
 - Authentication provider tells spring how to authenticate the user.
 
-
 ### Add users: UserDetailService:
+
 - Loads user by username
 - Contract that allows Authentication provider to know user’s username, password, roles
 - We have to let spring now how to read the username and password for authentication
 - Retrieves details from DB/memory/LDAP
 
 ### Password Encoder:
+
 - Encodes password/ Compares password
 - Authentication provider uses this to know if password is correct and role is valid
 - E.G B Crypt
@@ -33,18 +37,17 @@
 - Has methods encode and matches for verifying password
 
 ### Security Context:
+
 - If user is valid, the details are stored by authentication filter in Security Context object.
 - Stores users authorities. i.e what the user is allowed to do
-
-
-
-
 
 ## Demo:
 
 - Create a rest endpoint that return String
-- Adding spring security auto configures some default security. You have to override this configuration (dummy implementation that tells spring security is working)
-- Dummy Implementation: Username is “user” and password is printed in console. Only useful to ensure that spring security is working,
+- Adding spring security auto configures some default security. You have to override this configuration (dummy
+  implementation that tells spring security is working)
+- Dummy Implementation: Username is “user” and password is printed in console. Only useful to ensure that spring
+  security is working,
 - Hitting the endpoint giver unauthorised as you have not sent a username and password.
     - Select basic auth on postman and try hitting the endpoint with username and password - Result: 200 OK
     - POSTMAN base 64 encodes username and password in HTTP header
@@ -56,7 +59,8 @@
 - Overriding UserDetailService and Password Encoder:
     - Create a Config Class ( say ProjectConfig)
     - Expose bean for UserDetailsService
-        - Expected to provide username/password/etc and return the contract UserDetails. If not found, throw UserNameNotFoundException
+        - Expected to provide username/password/etc and return the contract UserDetails. If not found, throw
+          UserNameNotFoundException
         - Has methods like is Credentials Expired etc
         - Use InMemoryUserDetailsManager for this demo
         - Provide user Using User.Builder to provide in memory user:
@@ -69,5 +73,6 @@
 - App will fail as we did not override password encoder : No password encoder found (by Authentication Provider)
 - Defining password encoder
     - reate bean of type PasswordEncoder
-    - Return encoder to return password as is (because we have stored password as plain text in user details service): NoOpPasswordEncoder
+    - Return encoder to return password as is (because we have stored password as plain text in user details service):
+      NoOpPasswordEncoder
 - Now we get a 200 Response

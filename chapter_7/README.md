@@ -1,7 +1,9 @@
 # Chapter 7
 
 #### Multiple Authentication Providers Part 2
+
 #### Security Context
+
 #### NOTE: Demo continued from previous chapter
 
 ![architecture](src/main/resources/architecture1.png)
@@ -10,15 +12,14 @@
 
 ## Demo
 
-
-          
-
 ### TokenAuthentication
+
 - In authentication package
 - extend UsernamePasswordAuthenticationToken
 - Add both constructors
 
 ### Create a new filter for Token authentication
+
 - Create TokenAuthFilter in filter package
     - @Component
     - Implement OncePerRequestFilter
@@ -43,6 +44,7 @@
 - else set response status as forbidden 403
 
 ### TokenAuthProvider
+
 - @Component
 - Create class in providers package
 - Implement Authentication Provider and imlement authenticate and supports
@@ -54,15 +56,16 @@
     - Do exists = tokenManager.contains(token)
 
         - exists = tokenManager.contains(token) (Ideally should be decoupled in an authentication provider)
-        - if (exists) 
+        - if (exists)
             - filterchain.doFilter(request, response)
         - else throw new BadCredentialsException
     - UsernamePasswordAuthFIlter
         - Autowire tokenManager and do tokenManager.add(token) in step 2
         - if (exists) return new TokenAuthentication(token, null, null)
         - else throw BadCredentialsException
-        
+
 ### Configure token autjentication
+
 - Autowire TokenAutnenticationFIlter and TokenAuthProvider
 - Add filter by doing addFilterAfter(tokenAUthFIlter, BasicAuthenticationFilter.class)
 - Add provider

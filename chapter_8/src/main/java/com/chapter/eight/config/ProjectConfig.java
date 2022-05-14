@@ -49,8 +49,8 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .addFilterAt(usernamePasswordAuthFilter, BasicAuthenticationFilter.class)
-            .addFilterAfter(tokenAuthFilter, BasicAuthenticationFilter.class);
+                .addFilterAt(usernamePasswordAuthFilter, BasicAuthenticationFilter.class)
+                .addFilterAfter(tokenAuthFilter, BasicAuthenticationFilter.class);
     }
 
     @Bean
@@ -62,9 +62,9 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
-            .authenticationProvider(usernamePasswordAuthProvider)
-            .authenticationProvider(otpAuthenticationProvider)
-            .authenticationProvider(tokenAuthProvider);
+                .authenticationProvider(usernamePasswordAuthProvider)
+                .authenticationProvider(otpAuthenticationProvider)
+                .authenticationProvider(tokenAuthProvider);
     }
 
     @Bean

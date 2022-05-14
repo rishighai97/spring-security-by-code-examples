@@ -9,9 +9,11 @@
 ## Demo
 
 ### Create new project with dependencies
+
 - spring web, spring security, lombok
 
 ### Create controller
+
 - controllers package
 - DocumentController
 - @RestController
@@ -19,8 +21,9 @@
 - List<Document> findDocuments(@PathVariable String username)
     - @GetMapping("/documents/{username}")
     - return doucumentService.findDocuments(username)
-    
+
 ### Create model
+
 - model package
 - Document
     - String text
@@ -28,6 +31,7 @@
     - NoArgsConstructor, Getters, Setters
 
 ### Create service
+
 - service package
 - DocumentService
 - @Service
@@ -35,6 +39,7 @@
     - return List.of()
 
 ### Create configuration
+
 - config package
 - ProjectConfig
 - @Configuration
@@ -52,12 +57,14 @@
     - PasswordEncoder
     - @Bean
     - return NoOpPasswordEncoder.getInstance()
-    
+
 ### Setup permission evaluator
+
 - Create Permission Evaluator
     - create security package
     - DocumentPermissionEvaluator
-        - takes authentication object from Security Context, you need not pass it when calling evaluator via global method security annotations
+        - takes authentication object from Security Context, you need not pass it when calling evaluator via global
+          method security annotations
         - implement PermissionEvaluator
         - override hasPermission methods (2)
             - we use first one with 3 parameters. Return false in the method returning 4 parameters
@@ -72,8 +79,8 @@
         - meh = new DefaultMethodSecurityExpressionHandler()
         - meh.setPermissionEvaluator(permissionEvaluator())
 
-
 ### GLobal method security annotation to check if document user = authenticated user using our custom Permission Evaluator
+
 - service => DocumentService
 - @PostAuthorize("hasPermission(returnObject, 'read')") // can pass '' or null
 - findDocument(String username)
@@ -82,14 +89,16 @@
     - doc.setUser("john")
     - doc.setTest("TEXT")
     - return List.of(doc)
-    
+
 ### Test the application by adding break point in hasPermission in DocumentPermissionEvaluator (security)
+
 - start application in debug mode
 - hit http://localhost:8080/documents/john with basic auth john|12345
     - you come to the break point in has permission method
     - this proves that our setup is correct
-    
+
 ### Implementing authorization rule
+
 - security => DocumentPermissionEvaluator
 - List<Document> returnedList = (List<Document>) targetObject
 - String username = authentication.getName()
@@ -99,21 +108,26 @@
 - return docsBelongToTHeUser && hasProperAuthority
 
 ### Note
+
 - When you want to write a complex authorization rule, you use permission evaluator to decouple the authorization logic
 - Do not make you security complex to complex as they degrade the performance
 
 ### Test the application with permission evaluator implemented
+
 - Hit /document/john with john|12345
     - 200 OK as owner = john and authority = read
 - Hit /document/bill with bill|12345
     - 403 FORBIDDEN as owner != john and authority != read
-    
+
 ### Note
+
 - This example did not need username as path variable since we use username from authenticated user
 
 ### Alternative to Performance Evaluator and hasPermission (covered in chapter_30 in youtube playlist)
+
 - we need to have a solution where we have to provide multiple authorization rules
-- Permission Evaluator has a second method with type field in hasPermission to provide multiple implementation, still it is not clean
+- Permission Evaluator has a second method with type field in hasPermission to provide multiple implementation, still it
+  is not clean
 - Alternative: Create a spring bean returning true/false in the context
 - Creation of bean
     - security => DocumentMethodAuthorizationManager

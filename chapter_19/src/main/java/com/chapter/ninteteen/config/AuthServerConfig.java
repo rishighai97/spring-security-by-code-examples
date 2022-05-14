@@ -36,7 +36,7 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
                 .secret("secret1")
                 .scopes("read")
                 .authorizedGrantTypes("password")
-                    .and()
+                .and()
                 .withClient("rs")
                 .secret("rssecret");
     }

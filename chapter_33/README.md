@@ -11,27 +11,30 @@
 - Authorization tests
     - would be working with only the security context in the entire workflow
     - Test creates a mock security context assuming that the user is authenticated
-    
 
 ## Demo
 
 ### Create new project with dependencies
+
 - spring web, spring security
 - NOTE: Main class with Spring boot enabled is necessary for Spring test to run
 
 ### Create controller
+
 - controllers package
 - DemoController
 - @RestController
 - String demo()
     - @GetMapping("/demp")
         - return "Demo!"
-    
+
 ### NOTE
+
 - you have the spring boot starter and spring security test dependencies
     - in the test scope (will not be used at runtime)
-    
+
 ### Create Example1Tests
+
 - src => test => java => package
 - Example1Tests
 - @SpringBootTest
@@ -44,9 +47,10 @@
     - void testUnauthenticatedDemoEndpoint()
         - never write function names long
         - function itself should tell its story
-        - or you can use @DisplayName("When calling the /demo endpoint without authentication we should get 401 UNAUTHORIZED")
+        - or you can use @DisplayName("When calling the /demo endpoint without authentication we should get 401
+          UNAUTHORIZED")
         - mockMvc.perform(get("/demo"))
-            .andExpect(status(),isUnauthorized()); // throw the exception
+          .andExpect(status(),isUnauthorized()); // throw the exception
         - Run the test
             - You can view the display name
             - test passed
@@ -54,7 +58,7 @@
     - @Test
     - void testAuthenticatedDemoENdpoint()
         - mocvMvc.perform(get("/demo"))
-            .andExpect(status().isOk())
+          .andExpect(status().isOk())
     - Run the test
         - failed. 401 instead of 200
     - Create a mockSecurity context
@@ -65,6 +69,7 @@
             - Passed as Authenticated user Mary was created in the Spring context
 
 ### Create real user for running the test case
+
 - config package
 - ProjectConfig
 - UserDetailsService
@@ -78,17 +83,20 @@
 - PasswordEncoder
     - @Bean
     - NoOpPasswordEncoder.getInstance()
-    
+
 ### Example1Test
+
 - authenticatedDemoEndpoint()
     - Still works and uses mary
-    
+
 ### Add Authorization
+
 - ProjectConfig
 - extend WebSecurityConfigurerAdapter
 - http.authorizeRequests().anyRequest().hasAuthority("read");
 
 ### Example1Test (endpoint authorization: Using MockUser)
+
 - authenticatedDemoEndpoint()
     - test fails because user mary does not have authority mary
 - authenticatedDemoEndpoint() => testAuthenticatedWithoutProperAuthDemoEndpoint()
@@ -100,8 +108,9 @@
     - no need to provide username as authorization rule is done on authorities and not the username
     - mockMvc.perform(get("/demo")).andExpect(status.isOk())
     - Running this test will pass
-    
+
 ### Example2Test (endpoint authorization: Using userDetailsService for testing)
+
 - Example2Tests
 - Copy all tests from Example1Tests
 - testAuthenticatedWithoutProperAuthDemoEndpoint()

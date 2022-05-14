@@ -11,10 +11,11 @@
 ## Demo (Copy code from chapter_33 and delete Example2Tests)
 
 ### Replace @WithMockUser with custom annotation to define users in security context
+
 - security package in tests
 - Create your annotation
 - WithCustomUser
-- @interface WithCustomUser 
+- @interface WithCustomUser
     - Target
         - makes it an annotation. Can be used on targets => methods, fields, parameters, classes
         - make sure that you specify the target => best practice
@@ -26,7 +27,8 @@
         - by default spring cannot use the annotation at runtime
         - You need to specify retention policy
         - <b>@Retention(RetentionPolicy.RUNTIME)</b>
-    - @WithSecurityContext(factory=WithCustomSecurityContextFactory.class) // link annotation with custom security context implementation in following step
+    - @WithSecurityContext(factory=WithCustomSecurityContextFactory.class) // link annotation with custom security
+      context implementation in following step
 - Add @WithCustomUser in Example1Tests => test methods
 - Will not work yet as we need to link security context to the annotation
 - Link annotation and security context
@@ -46,7 +48,7 @@
     - spring intercepts annotation
     - from annotation, it gets the factory
     - from factory, it gets the security context
-    
+
 - Run the forbidden test
     - test passes as in code we have authority read
 - Implement success test
@@ -54,7 +56,7 @@
     - @WithCustomUser
     - testAuthenticatedWIthAProperAuthDemoEndpoint
     - mockMvc.perform(get("/demo"))
-        .andExpect(status().isOk())
+      .andExpect(status().isOk())
     - WithCustomUser
         - Add logic in annotation
         - String authority()
@@ -65,9 +67,9 @@
         - ()->withCustomUser.authority()
     - Test all the tests
         - All are passing
-    
 
 ### Testing Global Method Security
+
 - Create Service
     - services package
     - NameService
@@ -89,7 +91,7 @@
     - .mvcMatches("/demo").hasAuthority("read").anyRequest().permitAll()
     - /hello has no endpoint authorization as we have applied method security for /hello endpoint
     - only authenticated users with authority read can call /hello
-- Testing 
+- Testing
     - Copy Example1Tests to Example2Tests
     - Remove @MockMvc
     - @Autowired nameService
@@ -111,8 +113,9 @@
         - String name = nameService.getName()
         - assertEquals("Mary", name);
         - All tests now pass
-    
+
 ### Testing authentication
+
 - requires less tests as there are limited number of authentications for an application
 - create Example3Tests with single method from Example2
 - @AutoConfigureMockMvc
@@ -121,7 +124,7 @@
 - Test goes through entire authentication workflow now
 - testAuthenticatedWithoutProperAuthDemoEndpoint()
     - mockMvc.perform(
-        get("/demo").with(httpBasic("bill", "12345"))
+      get("/demo").with(httpBasic("bill", "12345"))
       ).andExpect(status().isForbidden())
     - success
 - testAuthenticatedWithProperAuthDemoEndpoint()

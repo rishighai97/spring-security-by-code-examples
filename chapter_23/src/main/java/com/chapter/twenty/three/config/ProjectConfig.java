@@ -33,12 +33,12 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic();
 
         http
-            .authorizeRequests() // authorization starts
-            .anyRequest() // matcher
+                .authorizeRequests() // authorization starts
+                .anyRequest() // matcher
 //            .permitAll() // rule
 //            .denyAll() // rule
 //            .hasAuthority("manager") // rule
-        .hasAnyAuthority("admin", "manager") // rule | should be ROLE_admin, ROLE_manager
+                .hasAnyAuthority("admin", "manager") // rule | should be ROLE_admin, ROLE_manager
         ;
 
     }

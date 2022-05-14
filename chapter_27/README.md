@@ -10,7 +10,7 @@
     - Post Filter
     - Secured (less powerful)
     - Roles Allowed (less powerful)
-    
+
 - Workflow
     - ![architecture.png](src/main/resources/architecture.png)
     - After authentication, security context stores authentication instance
@@ -20,27 +20,31 @@
         - Authorization in this case cannot be done at end point level by filter chain
     - Thus, we need method level authorization
         - Done via aspect with provided annotations
-        
+
 ## Demo
 
 ### Create new project with dependencies
+
 - spring web, spring security
 
 ### Create service
+
 - service package
 - ProductService
 - List<String> findProductsForUser(String username)
     - return List.of("beer", "chocolate")
-    
+
 ### Create test controller
+
 - controllers package
 - ProductController
 - @RestController
 - @Autowire productService
 - @GetMapping("/products/{username}") List<String> findProductsForUsername(@PathVariable username)
     - return productService.findProductsForUser(username)
-    
+
 ### Create configurations
+
 - config package
 - ProjectConfig
 - @Configuration
@@ -73,26 +77,29 @@
     - http.httpBasic()
 - Disable endpoint level security
     - configure(http)
-    - http.authorizeRequests().anyRequest().authenticated() // permitAll will throw npe on no authentication on hitting controller as auth object null
-    
+    - http.authorizeRequests().anyRequest().authenticated() // permitAll will throw npe on no authentication on hitting
+      controller as auth object null
 
 ### Test the application via postman to demo there is no authorization
+
 - Start the application
 - Hit products endpoint
     - http://localhost:8080/products
     - 401 unauthorized as no credentials passed for authentication
 - Hit product endpoint with basic auth john | 12345
     - You get the response ["beer", "chocolate"]
-    
+
 ### PreAuthorize authorization
+
 - service => ProductService
 - @PreAuthorize("hasAuthority('write')")
 - Test products service with john | 12345
     - 403 forbidden as john has authority read and authorization rule mentions hasAuthority(write)
 - /products bill|12345
     - 200 OK as bill has write authority
-    
+
 ### Add commends on service
+
 - service => ProductService
 - @PreAuthorize
     - the authorization rules are validated before calling the protected method
@@ -108,21 +115,25 @@
 - @PostFilter
     - returned value should be collection or array
     - aspect applies the authorization rules and returns only the values that comply with authorization rules
-    
+
 ### Refer to parameter of method in PreAuthorize
+
 - service => ProductService
 - use case: We want to make sure that the username passed is same as the user that is authenticated
 - @PreAuthorize("#username == authentication.name)
     - username parameter is equal to the authenticated user's name
-- Test: login with bill and try to access product via john (possible vulnerability when @PreAuthorize is not configured with username validation)
+- Test: login with bill and try to access product via john (possible vulnerability when @PreAuthorize is not configured
+  with username validation)
     - http://localhost:8080/products/john : bill | 12345
         - you get 403 forbidden
     - http://localhost:8080/products/bill : bill | 12345
         - 200 OK
-    
+
 ### A good practice while writing global method security configuration rules
+
 - If @PreAuthorize has a more complex condition, either extract logic in a method or use permission to have custom logic
 
 ### NOTE on authorization rules
+
 - can be applied at a controller/security/repo/etc level
 - depends upon the use case

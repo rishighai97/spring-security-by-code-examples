@@ -1,9 +1,9 @@
 package com.chapter.six.security.filter;
 
-import com.chapter.six.security.authentications.UsernamePasswordAuthentication;
 import com.chapter.six.entity.Otp;
 import com.chapter.six.repository.OtpRepository;
 import com.chapter.six.security.authentications.OtpAuthentication;
+import com.chapter.six.security.authentications.UsernamePasswordAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Component;

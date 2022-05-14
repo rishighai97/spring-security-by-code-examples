@@ -18,7 +18,7 @@ public class JpaClientDetailsService implements ClientDetailsService {
         var clientOptional = clientRespository.findClientByClientId(clientId);
         return clientOptional
                 .map(SecurityClient::new)
-                .orElseThrow(()->new ClientRegistrationException(":("));
+                .orElseThrow(() -> new ClientRegistrationException(":("));
     }
 
 }

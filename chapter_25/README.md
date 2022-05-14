@@ -5,9 +5,11 @@
 ## Demo
 
 ### Create new project with dependencies
+
 - spring web and spring security
 
 ### Create endpoint to authorize
+
 - controllers package
 - DemoController
 - @RestController
@@ -20,6 +22,7 @@
     - return "Hello" + name
 
 ### Create configuration
+
 - config package
 - ProjectConfig
 - @Configuration
@@ -36,6 +39,7 @@
     - NoOpPasswordEncoder.getInstance()
 
 ### Setup authorization rules
+
 - config => ProjectConfig
 - extend WebSecurityConfigurerAdapter
 - override configure(http)
@@ -44,9 +48,10 @@
 - Matchers
     - mvcMatcher()
     - antMatcher()
-    -   --> ANT path expressions
+    - --> ANT path expressions
 
 ### MVC Matcher
+
 - config => ProjectConfig => configure(http)
 - Scenario 1:Exact match
     - .mvcMatchers("/a").hasAuthority("read")
@@ -106,6 +111,7 @@
         - when the paramter variable matches the regex
 
 ### Ant Matcher
+
 - Scenario 1 /**:
     - http.authorizeRequests()
         - .antMatchers("/a/**").hasAuthority("read")
@@ -117,7 +123,7 @@
     - .antMatchers("/a").authenticated()
     - .anyRequest().permitAll()
     - Test the application:
-        - /a with bill => works 
+        - /a with bill => works
         - /a without authentication => returns 401 unauthorized
         - <b>/a/ without credentials works!!</b>
     - Reason: /a goes to antMatcher and /a/ goes to permitAll()
@@ -130,6 +136,7 @@
 - NOTE: Prefer mvcMatcher vs antMatcher
 - Scenario 3: Adding http method
     - .mvcMatchers(HttpMethod.GET, "/a").authenticated()
-    
+
 ### Regex Matcher
+
 - Avoided as they are very complex

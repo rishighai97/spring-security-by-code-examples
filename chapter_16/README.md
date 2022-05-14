@@ -7,9 +7,11 @@
 ## Demo
 
 ### Create a new project with dependencies
+
 - spring web, spring security, spring security oauth2 (soon to be deprecated), spring data jpa, mysql driver
 
 ### Configuration UserManagementConfig
+
 - Package config
 - UserManagementConfig
     - @Configuration
@@ -24,6 +26,7 @@
         - return NoOpPasswordEncoder.getInstance()
 
 ### Configuration AuthServerConfig
+
 - in config package
 - AuthServerConfig with @Configuration and @EnableAuthorizerServer
 - extends AuthorizationServerConfigurerAdapter
@@ -35,10 +38,11 @@
     - endpoints.authenticationManager(authenticationManager)
 
 ### Create database table for clients
+
 - create and use database ss_chapter16
 - create table client
 - Add columns
-    - id PK | NN  | AI
+    - id PK | NN | AI
     - client_id varchar
     - secret text
     - grant_type
@@ -47,6 +51,7 @@
     - 1 | client1 | secret1 | password | read
 
 ### Setup datasource
+
 - Create application.properties in resources folder
 - Add
     - spring.datasource.url=jdbc:mysql://localhost/ss_chapter16
@@ -54,6 +59,7 @@
     - spring.datasource.password=rishighai
 
 ### Implement ClientDetailService
+
 - create security package
 - Create class JpaClientDetailsService
 - implements ClientDetailsService
@@ -62,6 +68,7 @@
 - Autowire the bean in authServerConfig and add it to configure.withClientDetails()
 
 ### Create Client entity
+
 - package entities
 - Client class with @Entity
 - int id
@@ -85,6 +92,7 @@
 - NOTE: validity seconds (access/refresh token) take default value if not implemented
 
 ### Create Client decorator over ClientDetails
+
 - security package
 - SecurityClient
 - implements clientDetails
@@ -92,22 +100,27 @@
 - add field Client client with all args constructor
 
 ### Client repository
+
 - package repositories
 - Interface ClientRepository extends JpaRepository<Client, Integer>
 - Optional<Client> findClientByClientId(String clientId)
 
 ### Configure JpaClientDetailsService in ClientDetailsService
+
 - @Autowired CLientRespository
 - In loadClientByClientId()
-    - clientRepository.findClientByClientId(clientId).map(c->new SecurityClient(c)).orElseThrow(()->new ClientRegistrationException(":(")))
+    - clientRepository.findClientByClientId(clientId).map(c->new SecurityClient(c)).orElseThrow(()->new
+      ClientRegistrationException(":(")))
 
 ### Test authorization server with opaque token via postman client
+
 - get access token
     - http://localhost:8080/oauth/token?grant_type=password&username=john&password=12345&scope=read
     - Add client basic auth
         - client1 | secret1
 
 ### Creating JWT token store
+
 - In AuthServerConfig
 - Add JwtAccessToenConverter @Bean
     - It configures the token store (configure keys on token)
@@ -121,8 +134,9 @@
 - Configure token store and convertor
 - In configure(endpoints)
     - endpoints.tokenStore(tokenStore()).accessTokenConvertor(convertor())
-    
+
 ### Test the application
+
 - Restart the application
 - get access token
     - http://localhost:8080/oauth/token?grant_type=password&username=john&password=12345&scope=read
@@ -133,6 +147,7 @@
     - It is an encoded String version
 
 ### Decoding JWT
+
 - go to jwt.io and paste ypur encoded token
 - decoded
 - JWT is base 64 encoded to make them shorter to send over network

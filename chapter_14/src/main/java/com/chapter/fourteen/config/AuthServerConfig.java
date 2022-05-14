@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -21,19 +20,19 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security
-            .passwordEncoder(NoOpPasswordEncoder.getInstance())
-            .checkTokenAccess("isAuthenticated()"); // permiteAll()
+                .passwordEncoder(NoOpPasswordEncoder.getInstance())
+                .checkTokenAccess("isAuthenticated()"); // permiteAll()
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
-            .inMemory()
+                .inMemory()
                 .withClient("client1")
                 .secret("secret1")
                 .accessTokenValiditySeconds(5000)
                 .authorizedGrantTypes("password")
-            .and()
+                .and()
                 .withClient("resourceserver")
                 .secret("12345");
     }

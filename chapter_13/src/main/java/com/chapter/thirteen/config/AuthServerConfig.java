@@ -24,25 +24,25 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security
-            .passwordEncoder(NoOpPasswordEncoder.getInstance())
-            .checkTokenAccess("isAuthenticated"); // permitAll or isAuthenticated
+                .passwordEncoder(NoOpPasswordEncoder.getInstance())
+                .checkTokenAccess("isAuthenticated"); // permitAll or isAuthenticated
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
-            .inMemory()
-            .withClient("client1")
-            .secret("secret1")
-            .scopes("read")
-            .accessTokenValiditySeconds(5000)
-            .authorizedGrantTypes("password", "refresh_token");
+                .inMemory()
+                .withClient("client1")
+                .secret("secret1")
+                .scopes("read")
+                .accessTokenValiditySeconds(5000)
+                .authorizedGrantTypes("password", "refresh_token");
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
-            .authenticationManager(authenticationManager)
-            .userDetailsService(userDetailsService); // for refresh token
+                .authenticationManager(authenticationManager)
+                .userDetailsService(userDetailsService); // for refresh token
     }
 }

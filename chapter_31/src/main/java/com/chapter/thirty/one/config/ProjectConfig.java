@@ -43,9 +43,9 @@ public class ProjectConfig {
 //                    .hasAuthority("read")
                 .authenticated() // to test global method security
                 .and()
-                    .httpBasic()
+                .httpBasic()
                 .and()
-                    .build();
+                .build();
     }
 
 }

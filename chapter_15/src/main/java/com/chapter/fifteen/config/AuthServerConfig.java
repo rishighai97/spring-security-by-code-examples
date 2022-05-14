@@ -31,11 +31,11 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
-            .inMemory()
-            .withClient("client")
-            .secret("12345")
-            .scopes("read")
-            .authorizedGrantTypes("password", "refresh_token");
+                .inMemory()
+                .withClient("client")
+                .secret("12345")
+                .scopes("read")
+                .authorizedGrantTypes("password", "refresh_token");
     }
 
     @Override

@@ -37,9 +37,9 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
 //            .anyRequest() // matcher
 //            .hasRole("ADMIN"); // rule
         http
-            .authorizeRequests()
-            .mvcMatchers("/hello").hasRole("ADMIN") // matcher | authorization role
-            .mvcMatchers("/ciao").hasRole("MANAGER")
-            .anyRequest().permitAll();
+                .authorizeRequests()
+                .mvcMatchers("/hello").hasRole("ADMIN") // matcher | authorization role
+                .mvcMatchers("/ciao").hasRole("MANAGER")
+                .anyRequest().permitAll();
     }
 }

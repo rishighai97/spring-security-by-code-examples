@@ -16,12 +16,12 @@ public class DocumentPermissionEvaluator implements PermissionEvaluator {
         List<Document> returnedList = (List<Document>) targetDomainObject;
         boolean docsBelongToAuthUser = returnedList
                 .stream()
-                .allMatch(d->d.getUser().equals(username));
+                .allMatch(d -> d.getUser().equals(username));
 
         String authority = (String) permission;
         boolean hasProperAuthority = authentication.getAuthorities()
                 .stream()
-                .anyMatch(d->d.getAuthority().equals(authority));
+                .anyMatch(d -> d.getAuthority().equals(authority));
 
         return docsBelongToAuthUser && hasProperAuthority;
     }

@@ -1,7 +1,8 @@
 # spring-security-by-code-examples
 
-Code examples following [spring security playlist](https://www.youtube.com/playlist?list=PLEocw3gLFc8XRaRBZkhBEZ_R3tmvfkWZz) by Laurentiu Spilca
-
+Code examples
+following [spring security playlist](https://www.youtube.com/playlist?list=PLEocw3gLFc8XRaRBZkhBEZ_R3tmvfkWZz) by
+Laurentiu Spilca
 
 ## Index
 

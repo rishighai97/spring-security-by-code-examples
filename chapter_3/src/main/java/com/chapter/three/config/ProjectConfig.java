@@ -38,10 +38,10 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic();
         http.csrf().disable();
         http
-            .authorizeRequests()
-            .mvcMatchers("/user")
-            .permitAll()
-            .anyRequest()
-            .authenticated();
+                .authorizeRequests()
+                .mvcMatchers("/user")
+                .permitAll()
+                .anyRequest()
+                .authenticated();
     }
 }

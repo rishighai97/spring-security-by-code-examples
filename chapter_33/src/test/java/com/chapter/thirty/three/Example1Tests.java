@@ -27,7 +27,8 @@ public class Example1Tests {
     }
 
     @Test
-    @WithMockUser(username = "mary") // passing no user also works
+    @WithMockUser(username = "mary")
+        // passing no user also works
     void testAuthenticatedWithoutProperAuthDemoEndpoint() throws Exception {
         mockMvc
                 .perform(get("/demo"))

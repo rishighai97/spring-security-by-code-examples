@@ -1,6 +1,7 @@
 # Chapter 6
 
 #### Multiple Authentication Providers Part 1
+
 #### Two-factor Authentication : Username and password and otp authentication to generate a token
 
 - 2 step authentication
@@ -12,6 +13,7 @@
 ### Create new project with spring web, security and data jpa, mysql connector
 
 ### Make connection to database
+
 - Add following to application.properties
     - spring.datasource.url=jdbc:mysql://localhost/ss_chapter5
     - spring.datasource.username=root
@@ -24,11 +26,13 @@
     - Make id PK | NN | AI
     - username varchar
     - otp varchar
-    
+
 ### create packages
+
 - controller, config, entity, repository
 
 ### Create entities
+
 - User
     - @Entity
     - int id (@Id, @GeeneratedValue(GenerationType.IDENTITY))
@@ -38,8 +42,9 @@
     - @Entity
     - int id (@Id, @GeeneratedValue(GenerationType.IDENTITY))
     - String username, otp
-    
+
 ### Create repositoties
+
 - UserRepository
     - @Repository
     - extend JpaRepository<User, Integer>
@@ -48,15 +53,18 @@
     - extends JpaRepository<Otp, Integer>
 
 ### Create controller
+
 - Hello Controller with @GetMapping returning a String ("/hello")
 
 ### Create configuration
+
 - ProjectConfig
     - @Configuration
     - extend WebSecurityConfigurerAdapter
     - Override
-    
+
 ### Add users: Create UserDetailsService
+
 - Create JpaUserDetailsService
     - @Service
     - implement UserDetailsService
@@ -68,16 +76,18 @@
     - <b>Create SecurityUser wrapping User for making it of type UserDetails in models package</b>
         - Create package security and create class SecurityUser
         - Implement UserDetails and add field User user
-        - Override all the methods  and create a constructor as well
+        - Override all the methods and create a constructor as well
         - In authorities return read, return true wherever applicable. Return username and password from the user object
     - Return SecurityUser object
-    
+
 ### Add password encoder
+
 - In project config, create a bean returning a NoOp
 
 ### Creating custom filter and custom provider packages (filter, packages)
 
 ### Creating a custom filter
+
 - Create UsernamePasswordAuthFilter
     - @Component
     - extend OncePerRequestFilter
@@ -112,8 +122,9 @@
             - create object a for OtpAuthentication(username , otp)
             - authenticationManager.authenticate(a)
             - SecurityContextHolder.getContext().setAuthentication(a) will be done in part 2
-    
+
 ### Creating custom authentication providers
+
 - UsernamePasswordAuthProvider
     - @Component
     - implements AuthenticationProvider
@@ -125,22 +136,24 @@
         - username = authentication.getName()
         - password = authentication.getCredentials() as a String
         - UserDetails user = userDetailsService.loadUserByUsername()
-        - if passwordEncoder matches password and db password, return new Object for UsernamePasswordAuthentication(username, password, user.getAuthorities())
+        - if passwordEncoder matches password and db password, return new Object for UsernamePasswordAuthentication(
+          username, password, user.getAuthorities())
         - Note Constructor with 3 parameters is necessary as it sets isAuthenticated to true
         - else throw BadCredentialsException
 - OtpAuthenticationProvider
-    - Same as above, just replace  
+    - Same as above, just replace
         - password with otp
         - supports checks for OtpAuthentication.class
     - authenticate(Authetnication)
         - get username and otp from authentication
         - Autowire OtpRepository after implementing otpRepository.findOtpByUsername(username)
         - o = otpRepository,finfOtpByUsername(username)
-        - if o.isPresent and o.get().getPassword().equals(otp), return new OtpAuthentication(username, otp , read authorities)
+        - if o.isPresent and o.get().getPassword().equals(otp), return new OtpAuthentication(username, otp , read
+          authorities)
         - else throw BadCredentialsException()
-    
 
 ### Generating otp in UsernamePasswordAuthFilter
+
 - Inject OtpRepository
 - In Step 1, generate otp
     - code = String.valueOf(new Random().nextInt(9999) + 1000)
@@ -150,7 +163,8 @@
     - response.setHeader("Authorization", UUID.randomUUID().toString())
 
 ### Setup filter and providers
-- Override configure methdods  with authManagerBuilder and http
+
+- Override configure methdods with authManagerBuilder and http
 - authBuilder (providers)
     - set authenticationpProviders
     - Autowire UsernamePasswordAuthProvider and OtpAuthenticationProvider
@@ -158,11 +172,12 @@
 - http (filters)
     - Autowire UsernamePasswordAuthFilter
     - http.addFilterAt(usernamePasswordAuthFilter , BasicAuthenticationFilter)
-    
-### Add user 
+
+### Add user
+
 - 1, bill, 12345
 
-### Test 
+### Test
 
 - step1:
     - http://localhost:8080/login
