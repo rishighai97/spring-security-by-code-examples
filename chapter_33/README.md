@@ -17,6 +17,7 @@
 
 ### Create new project with dependencies
 - spring web, spring security
+- NOTE: Main class with Spring boot enabled is necessary for Spring test to run
 
 ### Create controller
 - controllers package

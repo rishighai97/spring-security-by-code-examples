@@ -1,11 +1,13 @@
-package com.chapter.thirty.three;
+package com.chapter.thirty.four;
 
+import com.chapter.thirty.four.security.WithCustomUser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -27,7 +29,7 @@ public class Example1Tests {
     }
 
     @Test
-    @WithMockUser(username = "mary") // passing no user also works
+    @WithCustomUser(authorities = "write")
     void testAuthenticatedWithoutProperAuthDemoEndpoint() throws Exception {
         mockMvc
                 .perform(get("/demo"))
@@ -35,7 +37,7 @@ public class Example1Tests {
     }
 
     @Test
-    @WithMockUser(username = "mary", authorities = "read")
+    @WithCustomUser(authorities = "read")
     void testAuthenticatedWithProperAuthDemoEndpoint() throws Exception {
         mockMvc
                 .perform(get("/demo"))

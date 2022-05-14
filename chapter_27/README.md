@@ -67,7 +67,7 @@
 - PasswordEncoder
     - @Bean
     - NoOpPasswordEncoder.getInstance()
-- enable http basic (Done by default by spring)
+- enable http basic for enabling authentication
     - extend WebSecurityConfigurerAdapter
     - override configure(http)
     - http.httpBasic()
