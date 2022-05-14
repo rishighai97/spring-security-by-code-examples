@@ -18,16 +18,16 @@ public class Example1Tests {
     @Autowired
     private MockMvc mockMvc;
 
-    @DisplayName("When calling the /demo endpoint without authentication we should get 403 FORBIDDEN")
+    @DisplayName("When calling the /demo endpoint without authentication we should get 401 UNAUTHORIZED")
     @Test
-    void testAuthenticatedDemoEndpointWithoutUser() throws Exception {
+    void testUnAuthenticatedDemoEndpointWithoutUser() throws Exception {
         mockMvc
                 .perform(get("/demo"))
-                .andExpect(status().isForbidden()); // Unauthorized if no authentication
+                .andExpect(status().isUnauthorized()); // Will fail as authentication is enabled
     }
 
     @Test
-    @WithMockUser(username = "mary")
+    @WithMockUser(username = "mary") // passing no user also works
     void testAuthenticatedWithoutProperAuthDemoEndpoint() throws Exception {
         mockMvc
                 .perform(get("/demo"))
